@@ -1,4 +1,4 @@
-FROM php:3-fpm
+FROM php:7.3-fpm
 
 MAINTAINER JFelix 
 ARG VCS_REF
