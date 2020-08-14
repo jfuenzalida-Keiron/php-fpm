@@ -21,9 +21,17 @@ RUN apt-get update && apt-get -qqy install \
    nginx \
    supervisor \
    git \
-   zip
+   zip \
+   curl \
+   libpng-dev \
+   libonig-dev \
+   libxml2-dev \
+   unzip \
+   libzip-dev
 
 RUN rm -rf /var/lib/apt/lists/*
+
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd soap zip
 
 RUN curl -sSL https://phar.phpunit.de/phpunit.phar -o phpunit.phar && \
    chmod +x phpunit.phar && \
