@@ -33,7 +33,7 @@ RUN rm -rf /var/lib/apt/lists/*
 
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
-    
+
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd soap zip
 
 RUN curl -sSL https://phar.phpunit.de/phpunit.phar -o phpunit.phar && \
@@ -50,5 +50,7 @@ COPY conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN mkdir /app
 WORKDIR /app
 COPY ./src /app
+
+EXPOSE 9003
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
