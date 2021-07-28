@@ -32,7 +32,8 @@ RUN apt-get update && apt-get -qqy install \
 RUN rm -rf /var/lib/apt/lists/*
 
 RUN pecl install xdebug \
-    && docker-php-ext-enable xdebug
+    && docker-php-ext-enable xdebug \
+    && echo "xdebug.mode=xdebug.mode=develop,debug" >> /usr/local/etc/php/conf.d/xdebug.ini
 
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd soap zip
 
